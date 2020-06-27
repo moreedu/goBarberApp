@@ -51,7 +51,7 @@ export function* signUp({ payload }) {
   } catch (err) {
     Alert.alert(
       'Falha no cadastro',
-      'Houve erro no cadastro, verifque os dados informados'
+      'Houve erro no cadastro, verifique os dados informados'
     );
     yield put(signFailure());
   }
