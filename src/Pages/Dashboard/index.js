@@ -1,24 +1,24 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { Text } from 'react-native';
 
 import Background from '../../components/Background';
-import { signOut } from '../../store/modules/auth/actions';
+import Appointment from '../../components/Appointment';
 
-import { Container, LogoutButton } from './styles';
+import { Container, Title, List } from './styles';
+
+const data = [1, 2, 3, 4, 5];
 
 export default function Dashboard() {
-  const dispatch = useDispatch();
-
-  function handleLogout() {
-    dispatch(signOut());
-  }
-
   return (
     <Background>
       <Container>
-        <Text>Agendamentos - Dashboard</Text>
-        <LogoutButton onPress={handleLogout}>Sair</LogoutButton>
+        <Title>Agendamentos - Dashboard</Title>
+
+        <List
+          data={data}
+          keyExtractor={(item) => String(item)}
+          renderItem={({ item }) => <Appointment data={item} />}
+        />
       </Container>
     </Background>
   );

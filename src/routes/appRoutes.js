@@ -1,26 +1,44 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Dashboard from '../Pages/Dashboard';
+import Profile from '../Pages/Profile';
 
-const AppStack = createStackNavigator();
+const AppTab = createBottomTabNavigator();
 
 export default function AppRoutes() {
   return (
-    <AppStack.Navigator
-      screenOptions={{
-        headerStyle: { backgroundColor: '#0094CD' },
-        headerTintColor: '#FFF',
-        headerTitleAlign: 'center',
+    <AppTab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ color, size }) => {
+          let iconName;
+
+          if (route.name === 'Dashboard') {
+            iconName = 'event';
+          } else if (route.name === 'Profile') {
+            iconName = 'person';
+          }
+          return <Icon name={iconName} size={size} color={color} />;
+        },
+      })}
+      tabBarOptions={{
+        style: { backgroundColor: '#00008B' },
+        activeTintColor: '#FFF',
+        inactiveTintColor: 'rgba(255, 255, 255, 0.4)',
       }}
-      headerLayoutPreset="center"
-      headerBackTitleVisible={false}
     >
-      <AppStack.Screen
+      <AppTab.Screen
         name="Dashboard"
         component={Dashboard}
         options={{ title: '- Agendamentos -' }}
       />
-    </AppStack.Navigator>
+      <AppTab.Screen
+        name="Profile"
+        component={Profile}
+        options={{ title: '- Perfil -' }}
+      />
+    </AppTab.Navigator>
   );
 }
