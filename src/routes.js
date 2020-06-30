@@ -1,5 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
+import { useSelector } from 'react-redux';
 import SignIn from './Pages/SignIn';
 import SignUp from './Pages/SignUp';
 import Dashboard from './Pages/Dashboard';
@@ -9,7 +10,8 @@ import Dashboard from './Pages/Dashboard';
 
 const Stack = createStackNavigator();
 
-export default function Routes(Signed = false) {
+export default function Routes() {
+  const signed = useSelector((state) => state.auth.signed);
   return (
     <Stack.Navigator
       screenOptions={{
@@ -20,14 +22,12 @@ export default function Routes(Signed = false) {
       headerLayoutPreset="center"
       headerBackTitleVisible={false}
     >
-      {Signed ? (
-        <>
-          <Stack.Screen
-            name="Dashboard"
-            component={Dashboard}
-            options={{ title: '- Agendamentos -' }}
-          />
-        </>
+      {signed ? (
+        <Stack.Screen
+          name="Dashboard"
+          component={Dashboard}
+          options={{ title: '- Agendamentos -' }}
+        />
       ) : (
         <>
           <Stack.Screen
