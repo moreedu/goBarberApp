@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { ActivityIndicator } from 'react-native';
 import PropTypes from 'prop-types';
