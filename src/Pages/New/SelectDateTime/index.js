@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 
 import api from '../../../services/api';
 
@@ -57,6 +57,7 @@ export default function SelectDateTime({ navigation, route }) {
   );
 }
 
+/*
 SelectDateTime.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func,
@@ -69,3 +70,4 @@ SelectDateTime.propTypes = {
     }),
   }).isRequired,
 };
+*/

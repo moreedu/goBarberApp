@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import { useIsFocused } from '@react-navigation/native';
 import api from '../../services/api';
 import Background from '../../components/Background';
 import Appointment from '../../components/Appointment';
@@ -9,15 +9,19 @@ import { Container, Title, List } from './styles';
 export default function Dashboard() {
   const [appointments, setAppointments] = useState([]);
 
+  const isFocused = useIsFocused();
+
+  async function loadAppointments() {
+    const response = await api.get('appointments');
+
+    setAppointments(response.data);
+  }
+
   useEffect(() => {
-    async function loadAppointments() {
-      const response = await api.get('appointments');
-
-      setAppointments(response.data);
+    if (isFocused) {
+      loadAppointments();
     }
-
-    loadAppointments();
-  }, []);
+  }, [isFocused]);
 
   async function handleCancel(id) {
     const response = await api.delete(`appointments/${id}`);
@@ -41,8 +45,7 @@ export default function Dashboard() {
 
         <List
           data={appointments}
-          // eslint-disable-next-line prettier/prettier
-          keyExtractor={item => String(item.id)}
+          keyExtractor={(item) => String(item.id)}
           renderItem={({ item }) => (
             <Appointment onCancel={() => handleCancel(item.id)} data={item} />
           )}

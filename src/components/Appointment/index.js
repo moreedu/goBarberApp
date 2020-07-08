@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useMemo } from 'react';
 import { parseISO, formatRelative } from 'date-fns';
-import pt from 'date-fns/locale/pt';
+import pt from 'date-fns/locale/pt-BR';
 import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 

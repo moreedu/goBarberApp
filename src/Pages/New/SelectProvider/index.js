@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 
 import api from '../../../services/api';
 
 import Background from '../../../components/Background';
 
+// eslint-disable-next-line import/no-unresolved
 import { Container, ProvidersList, Provider, Avatar, Name } from './styles';
 
 export default function SelectProvider({ navigation }) {
@@ -47,9 +48,3 @@ export default function SelectProvider({ navigation }) {
     </Background>
   );
 }
-
-SelectProvider.propTypes = {
-  navigation: PropTypes.shape({
-    navigate: PropTypes.shape,
-  }).isRequired,
-};

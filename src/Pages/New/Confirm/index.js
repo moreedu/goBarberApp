@@ -1,7 +1,7 @@
+/* eslint-disable react/prop-types */
 import React, { useMemo } from 'react';
 import { formatRelative, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt-BR';
-import PropTypes from 'prop-types';
 
 import api from '../../../services/api';
 
@@ -46,7 +46,7 @@ export default function Confirm({ navigation, route }) {
     </Background>
   );
 }
-
+/*
 Confirm.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func,
@@ -64,3 +64,4 @@ Confirm.propTypes = {
     }),
   }).isRequired,
 };
+*/

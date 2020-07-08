@@ -10,7 +10,7 @@ import Confirm from '../Pages/New/Confirm';
 
 const NewStack = createStackNavigator();
 
-export default function AuthRoutes({ navigation }) {
+export default function NewRoutes({ navigation }) {
   return (
     <NewStack.Navigator
       screenOptions={{
