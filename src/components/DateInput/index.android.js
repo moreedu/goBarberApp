@@ -2,7 +2,7 @@
 import React, { useMemo } from 'react';
 import { DatePickerAndroid } from 'react-native';
 import { format } from 'date-fns';
-import pt from 'date-fns/locale/pt-BR';
+import pt from 'date-fns/locale/pt';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
